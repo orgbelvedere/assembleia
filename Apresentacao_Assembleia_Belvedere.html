@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assembleia Geral Extraordinária — Condomínio Residencial Belvedere Joinville</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070b14;
+      --bg-surface: #0e1526;
+      --bg-card: rgba(15, 23, 42, 0.88);
+      --bg-card-hover: rgba(22, 34, 60, 0.95);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --bg-card-border-glow: rgba(56, 189, 248, 0.3);
+      --primary: #2563eb;
+      --primary-light: #60a5fa;
+      --accent-cyan: #38bdf8;
+      --accent-amber: #f59e0b;
+      --accent-amber-light: #fcd34d;
+      --accent-red: #ef4444;
+      --accent-red-light: #f87171;
+      --accent-green: #10b981;
+      --accent-green-light: #34d399;
+      --accent-purple: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --slide-transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Glow */
+    .bg-glow-1 {
+      position: fixed;
+      top: -12vw;
+      right: -10vw;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(7, 11, 20, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-glow-2 {
+      position: fixed;
+      bottom: -15vw;
+      left: -10vw;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(7, 11, 20, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top Navigation Header */
+    header.deck-header {
+      position: relative;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 28px;
+      border-bottom: 1px solid var(--bg-card-border);
+      background: rgba(7, 11, 20, 0.88);
+      backdrop-filter: blur(16px);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.45);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.1rem;
+      font-family: var(--font-heading);
+    }
+    .brand-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-title span {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .timer-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--bg-card-border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      font-variant-numeric: tabular-nums;
+    }
+    .timer-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--bg-card-border);
+      color: var(--text-muted);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .header-btn:hover {
+      background: rgba(37, 99, 235, 0.15);
+      border-color: var(--primary-light);
+      color: #fff;
+    }
+    .header-btn.active {
+      background: var(--primary);
+      border-color: var(--accent-cyan);
+      color: #fff;
+    }
+
+    .progress-track {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .progress-fill {
+      height: 100%;
+      width: 7.14%;
+      background: linear-gradient(90deg, #2563eb, #38bdf8);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+    }
+
+    /* Main Viewport & Slides */
+    main.deck-viewport {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: min(1280px, 95vw);
+      height: min(740px, 83vh);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(50px) scale(0.98);
+      transition: opacity var(--slide-transition), transform var(--slide-transition), visibility var(--slide-transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 20px;
+      padding: 32px 42px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(18px);
+      overflow-y: auto;
+    }
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+      z-index: 5;
+    }
+    .slide.prev {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50px) scale(0.98);
+    }
+
+    /* Scrollbar */
+    .slide::-webkit-scrollbar {
+      width: 6px;
+    }
+    .slide::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .slide::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 3px;
+    }
+
+    /* Slide Header */
+    .slide-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding-bottom: 12px;
+      flex-shrink: 0;
+    }
+    .slide-tag {
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .slide-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 6px var(--accent-cyan);
+    }
+    .slide-title {
+      font-family: var(--font-heading);
+      font-size: 1.78rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .slide-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .slide-badge-num {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--bg-card-border);
+      color: var(--text-dim);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+
+    /* Slide Body Layouts */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      margin: 6px 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .card:hover {
+      background: rgba(255, 255, 255, 0.045);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+    .card.primary {
+      border-color: rgba(37, 99, 235, 0.4);
+      background: linear-gradient(145deg, rgba(37, 99, 235, 0.08), rgba(15, 23, 42, 0.5));
+    }
+    .card.alert {
+      border-color: rgba(239, 68, 68, 0.4);
+      background: linear-gradient(145deg, rgba(239, 68, 68, 0.08), rgba(15, 23, 42, 0.5));
+    }
+    .card.warning {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: linear-gradient(145deg, rgba(245, 158, 11, 0.08), rgba(15, 23, 42, 0.5));
+    }
+    .card.success {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.5));
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .card-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .badge-blue { background: rgba(37, 99, 235, 0.2); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-red { background: rgba(239, 68, 68, 0.2); color: var(--accent-red-light); border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-amber { background: rgba(245, 158, 11, 0.2); color: var(--accent-amber-light); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-green { background: rgba(16, 185, 129, 0.2); color: var(--accent-green-light); border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    .card-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.52;
+    }
+
+    /* Lists */
+    .item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .item-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.87rem;
+      line-height: 1.46;
+      color: var(--text-muted);
+    }
+    .item-list li strong {
+      color: var(--text-main);
+    }
+    .list-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+    .icon-cross { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+    .icon-check { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .icon-warn { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .icon-arrow { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+
+    /* Callout Box */
+    .callout-box {
+      background: rgba(255, 255, 255, 0.035);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px;
+      font-size: 0.87rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    /* Action Attachment Buttons */
+    .attachment-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(14, 165, 233, 0.2));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .attachment-btn:hover {
+      background: linear-gradient(135deg, #2563eb, #0284c7);
+      border-color: #38bdf8;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+      transform: translateY(-1px);
+    }
+    .attachment-btn.alert {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.2));
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fecaca;
+    }
+    .attachment-btn.alert:hover {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.4);
+    }
+
+    /* Photo Grid in Slide 9 */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .photo-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .photo-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    }
+    .photo-thumb-container {
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+    }
+    .photo-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .photo-card:hover .photo-thumb {
+      transform: scale(1.06);
+    }
+    .photo-info {
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .photo-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+    }
+    .photo-meta {
+      font-size: 0.72rem;
+      color: var(--accent-red-light);
+      font-weight: 600;
+    }
+
+    /* Stat heroes & Visual elements */
+    .stat-hero {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .stat-num {
+      font-family: var(--font-heading);
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .stat-num.danger { color: #f87171; text-shadow: 0 0 20px rgba(239, 68, 68, 0.35); }
+    .stat-num.primary { color: #38bdf8; text-shadow: 0 0 20px rgba(56, 189, 248, 0.35); }
+    .stat-num.warning { color: #fbbf24; text-shadow: 0 0 20px rgba(245, 158, 11, 0.35); }
+    .stat-num.success { color: #34d399; text-shadow: 0 0 20px rgba(16, 185, 129, 0.35); }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 12px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      flex-shrink: 0;
+    }
+
+    /* Bottom Deck Controls */
+    footer.deck-controls {
+      position: relative;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 28px;
+      background: rgba(7, 11, 20, 0.92);
+      border-top: 1px solid var(--bg-card-border);
+      backdrop-filter: blur(16px);
+    }
+    .nav-hints {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .key-badge {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ctrl-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--bg-card-border);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 9px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .ctrl-btn:hover:not(:disabled) {
+      background: var(--primary);
+      border-color: var(--accent-cyan);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+    .ctrl-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding: 0 8px;
+      min-width: 105px;
+      text-align: center;
+    }
+
+    /* Modals & Drawers */
+    .speaker-drawer {
+      position: fixed;
+      bottom: 56px;
+      right: 28px;
+      width: 400px;
+      max-height: 480px;
+      background: rgba(14, 21, 38, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideUp 0.2s ease;
+    }
+    .speaker-drawer.open { display: flex; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .speaker-header {
+      padding: 12px 16px;
+      background: rgba(37, 99, 235, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .speaker-header-title {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .speaker-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .speaker-body {
+      padding: 16px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .speaker-body strong { color: #fff; }
+
+    .overview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 15, 0.92);
+      backdrop-filter: blur(20px);
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+      padding: 30px 40px;
+      overflow-y: auto;
+    }
+    .overview-modal.open { display: flex; }
+    .overview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 14px;
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .overview-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .overview-card:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.08);
+      transform: translateY(-2px);
+    }
+    .overview-card.current {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+      background: rgba(37, 99, 235, 0.15);
+    }
+    .overview-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .overview-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    /* Modal de Anexo / Lightbox Universal */
+    .doc-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 12, 0.94);
+      backdrop-filter: blur(20px);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: fadeIn 0.2s ease;
+    }
+    .doc-modal.open { display: flex; }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .doc-modal-container {
+      background: var(--bg-surface);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      width: min(1000px, 94vw);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+    }
+    .doc-modal-header {
+      padding: 14px 20px;
+      background: rgba(37, 99, 235, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .doc-modal-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .doc-modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .doc-modal-body img {
+      max-width: 100%;
+      max-height: 65vh;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      align-self: center;
+    }
+    .doc-modal-footer {
+      padding: 12px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Fund Bar Graphic */
+    .fund-graphic-container {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .bar-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .bar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .bar-track {
+      height: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      transition: width 1s ease-out;
+      white-space: nowrap;
+    }
+    .bar-fill.limit {
+      background: linear-gradient(90deg, #10b981, #059669);
+      width: 12%;
+      min-width: 130px;
+    }
+    .bar-fill.overflow {
+      background: linear-gradient(90deg, #ef4444, #dc2626);
+      width: 100%;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+    }
+
+    /* Multiplier visual box */
+    .math-callout {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .math-factor {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #f87171;
+    }
+
+    /* Print styles */
+    @media print {
+      @page {
+        size: 297mm 210mm;
+        margin: 0;
+      }
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      html, body {
+        width: 297mm !important;
+        height: auto !important;
+        overflow: visible !important;
+        background-color: #070b14 !important;
+        color: #f8fafc !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .bg-glow-1, .bg-glow-2, header, footer, .speaker-drawer, .overview-modal, .doc-modal, .lightbox-overlay {
+        display: none !important;
+      }
+      main.deck-viewport {
+        display: block !important;
+        position: static !important;
+        width: 297mm !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .slide {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        width: 297mm !important;
+        height: 210mm !important;
+        max-width: 297mm !important;
+        max-height: 210mm !important;
+        box-sizing: border-box !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin: 0 !important;
+        padding: 18mm 24mm !important;
+        background: #0b1120 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+      }
+      .slide:last-of-type {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+      .card {
+        background: rgba(15, 23, 42, 0.95) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .fund-graphic-container, .math-callout, .stat-hero {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient background glow elements -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Header -->
+  <header class="deck-header">
+    <div class="brand-group">
+      <div class="brand-icon-box">B</div>
+      <div class="brand-title">
+        Condomínio Residencial Belvedere Joinville
+        <span>Assembleia Geral Extraordinária • 13/10/2026</span>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="timer-pill" title="Tempo da Reunião">
+        <span class="timer-dot"></span>
+        <span id="presentation-timer">00:00</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="header-btn" id="btn-notes" title="Abrir Roteiro do Apresentador (Tecla N)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span>Roteiro / Notas</span>
+      </button>
+      <button class="header-btn" id="btn-overview" title="Visão Geral de Todos os Slides (Tecla M)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Todos os Slides</span>
+      </button>
+      <button class="header-btn" id="btn-fullscreen" title="Tela Cheia (Tecla F)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+        <span>Tela Cheia</span>
+      </button>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </header>
+
+  <!-- Main Presentation Viewport -->
+  <main class="deck-viewport">
+
+    <!-- ==========================================
+         SLIDE 1: CAPA OFICIAL EM DESTAQUE
+         ========================================== -->
+    <section class="slide active" data-index="0" data-notes="Abertura acolhedora, firme e elegante. Frisar que a assembleia representa a vontade legítima de mais de 30 proprietários de 118 lares. A intenção não é pessoal: é resgatar a governança, a transparência e valorizar o patrimônio coletivo do Belvedere.">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Assembleia Geral Extraordinária Convocada por 1/4 dos Condôminos</div>
+          <h1 class="slide-title" style="font-size: 2.1rem; color: #fff;">Descritivo das Alegações e Fundamentos da AGE</h1>
+          <p class="slide-subtitle">Deliberação sobre a Destituição da Síndica e Transição Responsável de Gestão</p>
+        </div>
+        <div class="slide-badge-num">01 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div style="background: radial-gradient(circle at 50% 30%, rgba(37,99,235,0.18), rgba(15,23,42,0.6)); border: 1px solid rgba(56,189,248,0.25); border-radius: 18px; padding: 26px 32px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.3); padding: 5px 14px; border-radius: 30px; font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+            🏢 Empreendimento Residencial
+          </div>
+
+          <h2 style="font-family: var(--font-heading); font-size: 2.3rem; font-weight: 900; color: #ffffff; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; text-shadow: 0 0 35px rgba(56,189,248,0.3);">
+            CONDOMÍNIO RESIDENCIAL BELVEDERE JOINVILLE
+          </h2>
+          <p style="font-size: 1.05rem; color: var(--text-muted); font-weight: 500; margin-bottom: 20px;">
+            Rua Tijucas, nº 339 — Bairro América • Joinville / SC • 118 Unidades Autônomas
+          </p>
+
+          <div class="grid-3" style="margin-top: 10px; text-align: left;">
+            <div class="card" style="background: rgba(0,0,0,0.25); border-color: rgba(255,255,255,0.08);">
+              <span class="card-badge badge-blue" style="align-self: flex-start;">Data & Horário</span>
+              <p style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-top: 8px;">13 de Outubro de 2026</p>
+              <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 2px;">19h20 (1ª Chamada) • 19h30 (2ª Chamada)</p>
+            </div>
+
+            <div class="card" style="background: rgba(0,0,0,0.25); border-color: rgba(255,255,255,0.08);">
+              <span class="card-badge badge-green" style="align-self: flex-start;">Amparo Legal</span>
+              <p style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-top: 8px;">Art. 1.355 do Código Civil</p>
+              <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 2px;">Art. 5º, §12 da Convenção • 1/4 Subscritores</p>
+            </div>
+
+            <div class="card" style="background: rgba(0,0,0,0.25); border-color: rgba(255,255,255,0.08);">
+              <span class="card-badge badge-amber" style="align-self: flex-start;">Formato & Votação</span>
+              <p style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-top: 8px;">Virtual + Votação Contínua</p>
+              <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 2px;">Google Meet + SurveyMonkey (13 a 15/10)</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Base documental: Pauta e Descritivo Oficial da AGE • Joinville/SC</span>
+        <span>Aperte [→] ou [Espaço] para avançar</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 2: ESCLARECIMENTOS PRELIMINARES
+         ========================================== -->
+    <section class="slide" data-index="1" data-notes="Desmistificar medos e desarmar tensões. O receio clássico é: 'A obra da fachada vai parar?'. Enfatizar enfaticamente que NÃO vai parar. Contratos são do CNPJ do condomínio. Esclarecer a razão do sigilo temporário das assinaturas (proteção contra retaliações).">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Contexto e Segurança dos Condôminos</div>
+          <h2 class="slide-title">Premissas Centrais: Desfazendo Mitos e Garantindo Segurança</h2>
+          <p class="slide-subtitle">Transparência plena, legalidade e continuidade total das obras e serviços</p>
+        </div>
+        <div class="slide-badge-num">02 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <!-- Card Fachada -->
+          <div class="card success" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">A Obra da Fachada NÃO Será Interrompida</span>
+              <span class="card-badge badge-green">Continuidade Absoluta</span>
+            </div>
+            <p class="card-text">
+              Circulam receios infundados de que a mudança de gestão interromperia a obra da fachada. <strong>Isso não tem amparo na realidade jurídica ou operacional:</strong>
+            </p>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-check">✓</span>
+                <div><strong>Contratos vinculados ao CNPJ:</strong> Contratos celebrados pertencem ao condomínio, jamais à pessoa física do síndico.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-check">✓</span>
+                <div><strong>Mais controle e transparência:</strong> A nova gestão trará fiscalização técnica idônea, medições auditadas e prestação de contas periódica aos moradores.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-check">✓</span>
+                <div><strong>Fluxo financeiro garantido:</strong> Todos os pagamentos e chamadas de capital continuarão normalmente conforme deliberado em assembleia.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card Sigilo -->
+          <div class="card warning" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Resguardo Legítimo dos 30 Subscritores</span>
+              <span class="card-badge badge-amber">Proteção Anti-Retaliação</span>
+            </div>
+            <p class="card-text">
+              A preservação temporária das assinaturas até a assembleia visa <strong>única e exclusivamente proteger os moradores contra constrangimentos</strong>:
+            </p>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div><strong>Histórico real de retaliações:</strong> Quatro condôminos já foram notificados extrajudicialmente apenas por exercer fiscalização das áreas comuns.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-check">✓</span>
+                <div><strong>Validação formal:</strong> A Administradora recebeu, conferiu e homologou a titularidade das 30 unidades requerentes antes de expedir o edital.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-check">✓</span>
+                <div><strong>Sem exigência no edital:</strong> Nem o Código Civil nem a Convenção exigem publicação prévia dos nomes no corpo do edital.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout-box">
+          <span>🎯</span>
+          <div>
+            <strong>Objetivo Exclusivo da AGE:</strong> Resgatar a boa governança, a convivência respeitosa e combater a perda de competitividade e valor de mercado que o Residencial Belvedere vem sofrendo em relação a outros empreendimentos do Bairro América.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Art. 1.355 CC e Art. 5º, §12 da Convenção Condominial</span>
+        <span>Diretrizes e Princípios da Convocação</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 3: FUNDAMENTO 1 - FUNDO DE RESERVA
+         ========================================== -->
+    <section class="slide" data-index="2" data-notes="Impacto financeiro gritante no bolso do morador! Apresentar o gráfico: o teto convencional é R$ 19.690,07 (5 arrecadações). O saldo real passou de MEIO MILHÃO DE REAIS (R$ 520.971,17). É mais de 25 vezes o teto! Cobrança ilegal de 10% vs 5% da convenção.">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fundamento 1 • Descumprimento da Convenção</div>
+          <h2 class="slide-title">Violação do Artigo 18: Fundo de Reserva Exorbitante</h2>
+          <p class="slide-subtitle">Arrecadação mantida ilegalmente após atingimento do teto estipulado na Convenção</p>
+        </div>
+        <div class="slide-badge-num">03 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="callout-box" style="margin-bottom: 4px;">
+          <span>📜</span>
+          <div>
+            <strong>O que determina o Artigo 18, §5º da Convenção Condominial:</strong><br>
+            <em>"O percentual do fundo de reserva <u>deixará de ser cobrado</u> quando o saldo do fundo atingir o valor correspondente a <strong>cinco (05) valores da arrecadação mensal</strong>, voltando a ser cobrado em caso de redução deste teto."</em>
+          </div>
+        </div>
+
+        <!-- Gráfico Visual de Barras -->
+        <div class="fund-graphic-container">
+          <div class="bar-row">
+            <div class="bar-labels">
+              <span style="font-weight: 700; color: var(--accent-green-light);">✓ Limite Máximo Permitido na Convenção (5 Arrecadações)</span>
+              <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-green-light);">R$ 19.690,07</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill limit">TETO: R$ 19.690,07</div>
+            </div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-labels">
+              <span style="font-weight: 700; color: #f87171;">⚠️ Saldo Efetivo Acumulado em Caixa (Agosto / 2026)</span>
+              <span style="font-family: var(--font-mono); font-weight: 800; color: #f87171;">R$ 520.971,17</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill overflow">SALDO ARRECADADO: R$ 520.971,17 (+2.645% DO TETO!)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 4px;">
+          <div class="stat-hero">
+            <div class="stat-num danger">> 25x</div>
+            <div class="stat-label">Excesso sobre o teto estabelecido pela Convenção</div>
+          </div>
+          <div class="stat-hero">
+            <div class="stat-num warning">10%</div>
+            <div class="stat-label">Alíquota cobrada na prática (Convenção fixa em 5%)</div>
+          </div>
+          <div class="stat-hero">
+            <div class="stat-num primary">R$ 66,76</div>
+            <div class="stat-label">Valor pago a maior por apartamento todo mês</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Demonstrativos financeiros e balancetes contábeis do Condomínio Belvedere</span>
+        <span>Artigo 18, §5º da Convenção Condominial</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 4: FUNDAMENTO 1.1 - FUNDO DE MANUTENÇÃO & CONVENÇÃO NÃO REGISTRADA
+         ========================================== -->
+    <section class="slide" data-index="3" data-notes="Mostrar o impacto financeiro (R$ 132,55 pagos a mais por mês por cada unidade) E a fragilidade jurídica gravíssima: A convenção de 2017 NUNCA foi registrada em cartório pela síndica em 9 anos! Ela obriga os moradores internamente, mas é ineficaz contra terceiros (prestadores de serviços, seguradoras, visitantes).">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fundamento 1.1 • Descumprimento da Convenção & Fragilidade Jurídica</div>
+          <h2 class="slide-title">Fundo de Manutenção Periódica & A Convenção Não Registrada</h2>
+          <p class="slide-subtitle">Sobrecarga mensal de R$ 132,55 por unidade e a ineficácia jurídica da Convenção perante terceiros</p>
+        </div>
+        <div class="slide-badge-num">04 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <!-- Comparativo Manutenção -->
+          <div class="card warning" style="gap: 8px;">
+            <div class="card-header">
+              <span class="card-title">Fundo de Manutenção Periódica</span>
+              <span class="card-badge badge-amber">Cálculo Irregular</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div><strong>Regra da Convenção:</strong> Deve corresponder a <strong>5% da cota ordinária</strong> de cada unidade (seria R$ 33,37 em jul/26).</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Prática Adotada:</strong> Base fixa de <strong>R$ 12.000,00/mês</strong> rateada igualmente (R$ 99,17 por unidade em jul/26).</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Valor pago a maior por unidade:</strong> <strong style="color: #f87171;">R$ 65,80 / mês</strong></div>
+              </li>
+            </ul>
+
+            <div style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 10px 14px; margin-top: 6px; text-align: center;">
+              <span style="font-size: 0.8rem; color: #fecaca; text-transform: uppercase; font-weight: 700;">Sobrecarga Total no Bolso por Unidade:</span>
+              <div style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 900; color: #f87171; line-height: 1.1; margin: 2px 0;">
+                R$ 132,55 / mês
+              </div>
+              <span style="font-size: 0.75rem; color: var(--text-dim);">Reserva (R$ 66,76) + Manutenção (R$ 65,80) = > R$ 15.600/mês no condomínio todo</span>
+            </div>
+          </div>
+
+          <!-- Convenção Não Registrada (Ajuste Solicitado) -->
+          <div class="card alert" style="gap: 8px;">
+            <div class="card-header">
+              <span class="card-title">Convenção de 2017 Sem Registro</span>
+              <span class="card-badge badge-red">Ineficaz a Terceiros</span>
+            </div>
+            <p class="card-text" style="font-size: 0.85rem;">
+              A convenção condominial foi aprovada em 2017, mas, após <strong>9 anos de mandato da atual gestão</strong>, até o presente momento <strong>NÃO FOI REGISTRADA em Cartório de Registro de Imóveis</strong>:
+            </p>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Inoponível a Terceiros:</strong> Embora produza efeitos internos entre condôminos, ela é <strong>juridicamente ineficaz em relação a pessoas externas</strong> ao condomínio.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Desproteção Contratual:</strong> Prestadores de serviços, visitantes, potenciais compradores e seguradoras <strong>não podem ser responsabilizados nem compelidos</strong> a regras exclusivas de convenção não registrada.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Risco Financeiro e Repetição de Indébito:</strong> Cobranças em desacordo com a convenção geram risco de ações judiciais de restituição com juros e correção.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Código Civil (Arts. 1.333 e 1.351) e Súmula 260 do STJ</span>
+        <span>Impacto Financeiro e Fragilidade Jurídica da Convenção</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 5: FUNDAMENTO 2 - INÉRCIA CRÔNICA (AJUSTADO: REMOVIDAS CORTINAS/EXAUSTORES)
+         ========================================== -->
+    <section class="slide" data-index="4" data-notes="Inércia e desrespeito à soberania da assembleia. Decisões aprovadas em fev/2024 e mar/2026 engavetadas por até 2 anos! Foco nos itens com certeza documental: Regimento Interno, Cancha de Bocha e Deck da Piscina. A administração só correu para colocar em pauta após o protocolo da AGE de destituição.">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fundamento 2 • Descumprimento de Decisões Soberanas</div>
+          <h2 class="slide-title">Inércia: Deliberações Aprovadas e Esquecidas por Mais de 2 Anos</h2>
+          <p class="slide-subtitle">Descumprimento do Art. 1.348, IV do Código Civil e reatividade açodada de véspera</p>
+        </div>
+        <div class="slide-badge-num">05 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <!-- AGO 28/02/2024 (Ajustado) -->
+          <div class="card alert" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Assembleia de 28/02/2024 (Há Mais de 2 Anos)</span>
+              <span class="card-badge badge-red">Engavetadas</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Revisão do Regimento Interno:</strong> Necessidade urgente aprovada formalmente pela assembleia geral, permaneceu engavetada por mais de 2 anos.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Espaço da Cancha de Bocha:</strong> Criação de nova área aprovada em 2024, permaneceu 2 anos sem apresentação de opções ou cotações de projetos.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Deck da Piscina e Academia:</strong> Orçamento de R$ 108 mil reprovado em 2024 com determinação expressa de novos estudos (concreto/calculista); abandonado por 2 anos.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- AGO 26/03/2026 -->
+          <div class="card warning" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Assembleia de 26/03/2026 & A Reação de Véspera</span>
+              <span class="card-badge badge-amber">Reatividade Sob Pressão</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Revitalização dos Halls de Entrada:</strong> Aprovada cotação em março/26; esquecida por mais de 6 meses sem retorno aos moradores.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div><strong>Ressurreição sob pressão:</strong> A gestão só resgatou esses temas esquecidos e abriu votações urgentes <em>imediatamente após</em> tomar ciência formal do requerimento da AGE de destituição.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div><strong>Falta de Governança:</strong> O condomínio não pode operar sob inércia crônica rompida apenas por temor de assembleia de destituição.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout-box">
+          <span>⚖️</span>
+          <div>
+            <strong>Art. 1.348, IV do Código Civil:</strong> Compete privativamente ao síndico cumprir e fazer cumprir as decisões da assembleia geral. O engavetamento sistemático de deliberações configura falha grave na execução das atribuições do cargo.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Atas das Assembleias Gerais de 28/02/2024 e 26/03/2026</span>
+        <span>Artigo 1.348, IV do Código Civil</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 6: FUNDAMENTO 3 - NOTIFICAÇÕES SEM PROVAS (COM ANEXO RONALDO BEZ BATTI)
+         ========================================== -->
+    <section class="slide" data-index="5" data-notes="Quebra inaceitável do dever de urbanidade. Em 31/07/2026, 4 moradores que apenas fiscalizavam obras receberam notificações extrajudiciais acusando invasão de canteiro sem nenhuma prova anexada! O condomínio foi acionado na justiça com 2 processos abertos. Clicar no botão para abrir a notificação real do Ronaldo Bez Batti!">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fundamento 3 • Abuso de Instrumentos Jurídicos</div>
+          <h2 class="slide-title">Intimidação: Notificações Extrajudiciais Sem Provas</h2>
+          <p class="slide-subtitle">Medidas punitivas emitidas contra condôminos que fiscalizavam obras custeadas pelos próprios moradores</p>
+        </div>
+        <div class="slide-badge-num">06 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="stat-hero">
+            <div class="stat-num danger">4</div>
+            <div class="stat-label">Condôminos notificados extrajudicialmente em 31/07/2026</div>
+          </div>
+          <div class="stat-hero">
+            <div class="stat-num warning">0</div>
+            <div class="stat-label">Fotos, vídeos ou provas anexadas às notificações</div>
+          </div>
+          <div class="stat-hero">
+            <div class="stat-num primary">2</div>
+            <div class="stat-label">Processos judiciais em curso ajuizados contra o condomínio</div>
+          </div>
+        </div>
+
+        <div class="card alert" style="gap: 10px;">
+          <div class="card-header">
+            <span class="card-title">Fatos Concretos da Ocorrência & Evidência Documental</span>
+            <span class="card-badge badge-red">Quebra de Confiança</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="list-icon icon-cross">✗</span>
+              <div><strong>Inexistência de canteiro delimitado:</strong> As notificações acusavam "ingresso irregular em canteiro", mas no local não havia <strong>nenhum tapume, sinalização de isolamento ou restrição física</strong> na data dos fatos.</div>
+            </li>
+            <li>
+              <span class="list-icon icon-cross">✗</span>
+              <div><strong>Incapacidade de fornecer provas prometidas:</strong> A administração alegou possuir filmagens no sistema de câmeras, mas nunca apresentou os registros. Posteriormente tentou exibir fotos de outro local, sem nenhuma identificação dos condôminos.</div>
+            </li>
+            <li>
+              <span class="list-icon icon-cross">✗</span>
+              <div><strong>Passivo judicial gerado para a coletividade:</strong> A conduta precipitada resultou em ações judiciais movidas contra o condomínio em agosto/2026, gerando despesas com advogados, risco de indenização e desgaste comunitário.</div>
+            </li>
+          </ul>
+
+          <!-- Botão de Anexo Integrado -->
+          <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); padding: 10px 16px; border-radius: 10px; margin-top: 4px;">
+            <div style="font-size: 0.85rem; color: #fff;">
+              <strong>Documento Probatório:</strong> Notificação Extrajudicial enviada a condômino em 31/07/2026
+            </div>
+            <button class="attachment-btn alert" id="btn-open-notificacao">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>Visualizar Notificação (Ronaldo Bez Batti)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Notificações Extrajudiciais de 31/07/2026 e Autos Processuais</span>
+        <span>Art. 1.335, II do Código Civil (Direito de Fiscalização)</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 7: FUNDAMENTO 4 - REGRA DOS 3 ORÇAMENTOS & ANEXOS CLONADOS (PAULO SÉRGIO vs JC BATTISTI)
+         ========================================== -->
+    <section class="slide" data-index="6" data-notes="Descumprimento flagrante do Artigo 18, §16 da Convenção. Na piscina, apresentaram apenas 1 orçamento de R$ 79.640,00 da Focus. E PIOR: a sindica não faz a revisão técnica dos orçamentos! Os orçamentos do Paulo Sérgio (R$ 84k) e da JC Battisti (R$ 105k) são CLONES idênticos palavra por palavra e com as mesmas fotos, com mais de R$ 21 mil de diferença, sem qualquer análise crítica da gestão!">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fundamento 4 • Violação Licitatória & Falta de Revisão</div>
+          <h2 class="slide-title">Obra da Piscina: Orçamento Único & Orçamentos Clones Sem Revisão</h2>
+          <p class="slide-subtitle">Violação do Art. 18, §16 e propostas idênticas aceitas sem qualquer análise técnica</p>
+        </div>
+        <div class="slide-badge-num">07 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <!-- Violação dos 3 orçamentos -->
+          <div class="card alert" style="gap: 8px;">
+            <div class="card-header">
+              <span class="card-title">AGO de 26/03/2026 & Imposição</span>
+              <span class="card-badge badge-red">Art. 18, §16</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Orçamento único:</strong> Apresentou exclusivamente a proposta da <em>Focus</em> (R$ 79.640,00) em votação engessada de "Aprovar ou Reprovar".</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Barreiras aos condôminos:</strong> Resistência a cotações trazidas por moradores e desvio de função do fiscal da fachada (Eng. Salomão) para questionar concorrentes.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Obra inacabada:</strong> A urgência era salvar a manta, mas após aprovada a Focus, a obra permaneceu meses sem conclusão.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- O Escândalo dos Orçamentos Clones -->
+          <div class="card warning" style="gap: 8px;">
+            <div class="card-header">
+              <span class="card-title">Falta de Revisão da Síndica</span>
+              <span class="card-badge badge-amber">Textos Idênticos</span>
+            </div>
+            <p class="card-text" style="font-size: 0.85rem;">
+              Demonstração clara de que a administração <strong>não realiza a conferência e revisão crítica das propostas</strong>:
+            </p>
+            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px 12px; font-size: 0.83rem; line-height: 1.5; color: #fff;">
+              • <strong>Paulo Sérgio (31/03/26):</strong> R$ 84.324,24<br>
+              • <strong>JC Battisti (22/04/26):</strong> R$ 105.600,00<br>
+              <span style="color: var(--accent-red-light); font-weight: 700;">➔ Diferença de R$ 21.275,76 (+25,2%) por propostas com texto, normas, erros de digitação e fotos 100% IDÊNTICAS!</span>
+            </div>
+
+            <!-- Botões dos Orçamentos -->
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+              <button class="attachment-btn" id="btn-open-paulo" style="flex: 1; justify-content: center; font-size: 0.76rem; padding: 6px 10px;">
+                📄 Orçamento Paulo Sérgio
+              </button>
+              <button class="attachment-btn" id="btn-open-jc" style="flex: 1; justify-content: center; font-size: 0.76rem; padding: 6px 10px;">
+                📄 Orçamento JC Battisti
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout-box">
+          <span>🔍</span>
+          <div>
+            <strong>Ausência de Compliance:</strong> Como a gestão submete ou aceita orçamentos com conteúdo copiado integralmente sem sequer notar a duplicidade textual e a discrepância de R$ 21 mil? Isso comprova falta de zelo técnico na condução dos recursos do condomínio.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Ata da AGO de 26/03/2026, Orçamentos Paulo Sérgio 15/26 e JC Battisti 15/26 1</span>
+        <span>Convenção Condominial • Art. 18, §16</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 8: FUNDAMENTO 5 - OPACIDADE NA CONTRATAÇÃO DA PISCINA
+         ========================================== -->
+    <section class="slide" data-index="7" data-notes="Falta de transparência e ausência de cronograma físico-financeiro na obra da piscina. As decisões foram conduzidas por links de votação remota sem reuniões abertas nem debate prévio. Cronologia de pedidos formais de esclarecimentos de maio/2026 que não obtiveram respostas conclusivas da administração.">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fundamento 5 • Gestão Financeira e Contratual</div>
+          <h2 class="slide-title">Opacidade na Contratação & Ausência de Cronograma</h2>
+          <p class="slide-subtitle">Falta de informações claras sobre a obra da piscina e ausência de cronograma físico-financeiro aprovado</p>
+        </div>
+        <div class="slide-badge-num">08 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <!-- Card Cronologia E-mails -->
+          <div class="card alert" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Cronologia de Questionamentos Sem Resposta (Maio/2026)</span>
+              <span class="card-badge badge-red">Falta de Diálogo</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>12/05/2026:</strong> Pedido de esclarecimentos sobre a intervenção indevida do Eng. Salomão na piscina e semelhança entre orçamentos concorrentes. <em>Sem resposta aos pontos centrais.</em></div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>14/05/2026:</strong> Cobrança sobre alteração de escopo técnico, motivos da reinclusão da Focus e pedidos formais de reunião. <em>Respostas evasivas.</em></div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>26 e 27/05/2026:</strong> Reiterada a ausência de diálogo, falta de respostas objetivas e percepção de seletividade no tratamento dos condôminos.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card Ausência de Cronograma e Votações Fechadas -->
+          <div class="card warning" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Ausência de Cronograma & Votações Sem Debate</span>
+              <span class="card-badge badge-amber">Falta de Transparência</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div><strong>Sem Cronograma Físico-Financeiro:</strong> Os proprietários foram chamados a aprovar desembolsos sem conhecer as etapas da obra, marcos temporais e critérios de medição da piscina.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Votações por Links Eletrônicos Isolados:</strong> Pedidos reiterados de reuniões abertas com a síndica e conselho foram negados, impondo votações eletrônicas sem espaço para dirimir dúvidas.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Falta de Instrução Decisória:</strong> A recusa em esclarecer pontos técnicos antes das deliberações violou o direito elementar de informação da coletividade condominial.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout-box">
+          <span>📉</span>
+          <div>
+            <strong>Votações por Formulário Sem Debate:</strong> As decisões foram conduzidas por links frios de votação remota, desprovidas de reuniões abertas de alinhamento, impedindo que a coletividade pudesse avaliar com clareza o destino de dezenas de milhares de reais.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Histórico de Notificações e Trocas de E-mails de Maio/2026</span>
+        <span>Princípios de Governança e Transparência</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 9: FUNDAMENTO 6 - ZELADORIA (COM FOTOS REAIS DO RELATÓRIO TÉCNICO)
+         ========================================== -->
+    <section class="slide" data-index="8" data-notes="Evidências visuais irrefutáveis de negligência na zeladoria! Relatório do morador Charles Ender (22 páginas, NBR 6118, 15575, 5674). Mostrar as fotos reais: Soleira do elevador trincada, gradil da Rua Tijucas escorrendo ferrugem e estofados do hall encardidos. Risco no processo da Construtora Thá por falta de manutenção preventiva na drenagem. Clicar nas fotos para ampliar ou no botão para abrir o PDF completo.">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fundamento 6 • Evidências Fotográficas da Degradação</div>
+          <h2 class="slide-title">Zeladoria Negligenciada & Risco Jurídico Estrutural</h2>
+          <p class="slide-subtitle">Relatório Técnico Fotográfico de Não Conformidades (23/04/2026) e sentença da Construtora Thá</p>
+        </div>
+        <div class="slide-badge-num">09 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <!-- Galeria de Fotos Reais (Ajustada sem o quadro do pórtico) -->
+        <div class="photo-grid">
+          <div class="photo-card" onclick="openPhotoModal('foto_elevador.jpg', 'Soleira do Elevador Torre A', 'Múltiplas fraturas e trincas no granito (NBR 15575-3). Risco de tropeço, infiltração e desprendimento de lascas em área de fluxo intenso.')">
+            <div class="photo-thumb-container">
+              <img src="foto_elevador.jpg" class="photo-thumb" alt="Soleira do Elevador Torre A">
+            </div>
+            <div class="photo-info">
+              <div class="photo-title">Soleira Elevador Torre A</div>
+              <div class="photo-meta">Trincas Severas • NBR 15575</div>
+            </div>
+          </div>
+
+          <div class="photo-card" onclick="openPhotoModal('foto_muro_ferrugem.jpg', 'Gradil e Muro Rua Tijucas', 'Oxidação profunda do metal com escorrimento alaranjado na alvenaria (NBR 5674). Desleixo visual e desvalorização da fachada externa.')">
+            <div class="photo-thumb-container">
+              <img src="foto_muro_ferrugem.jpg" class="photo-thumb" alt="Muro Rua Tijucas">
+            </div>
+            <div class="photo-info">
+              <div class="photo-title">Gradil Rua Tijucas</div>
+              <div class="photo-meta">Oxidação e Lixiviação</div>
+            </div>
+          </div>
+
+          <div class="photo-card" onclick="openPhotoModal('foto_estofados.jpg', 'Estofados do Hall de Entrada', 'Manchas de sujeira acumulada, deformação e aspecto de desleixo no hall social (NBR 13532). Transmite abandono a visitantes e moradores.')">
+            <div class="photo-thumb-container">
+              <img src="foto_estofados.jpg" class="photo-thumb" alt="Estofados Hall Social">
+            </div>
+            <div class="photo-info">
+              <div class="photo-title">Estofados do Hall</div>
+              <div class="photo-meta">Manchas e Deformação</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 2px;">
+          <div class="card alert" style="padding: 12px 16px;">
+            <div class="card-header" style="margin-bottom: 4px;">
+              <span class="card-title" style="font-size: 0.9rem;">Risco na Ação contra Construtora Thá</span>
+              <span class="card-badge badge-red">Sentença Judicial</span>
+            </div>
+            <p class="card-text" style="font-size: 0.82rem;">
+              O juiz sentenciou que <strong>não foi afastada a hipótese de deficiência de manutenção por parte do condomínio</strong> na drenagem do 1º andar, gerando risco iminente de perda de indenizações milionárias por culpa da gestão.
+            </p>
+          </div>
+
+          <div class="card primary" style="padding: 12px 16px; justify-content: center; align-items: center; text-align: center;">
+            <span style="font-size: 0.8rem; color: #fff; margin-bottom: 6px;">Dossiê Técnico Completo Disponível (22 Páginas):</span>
+            <button class="attachment-btn" id="btn-open-relatorio" style="font-size: 0.82rem; padding: 7px 16px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>Abrir Relatório Fotográfico Completo (PDF)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Relatório Técnico Fotográfico (23/04/2026 - Charles Ender, Apto 401 A)</span>
+        <span>Artigo 1.348, V do Código Civil (Dever de Conservação)</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 10: FUNDAMENTO 7 - SENSAÇÃO DE HOSTILIDADE E FALTA DE RESPOSTAS (AJUSTADO)
+         ========================================== -->
+    <section class="slide" data-index="9" data-notes="Perda irremediável de confiança. 'Sensação de Hostilidade e Intimidação'. Enfatizar a falta crônica de respostas objetivas aos questionamentos legítimos, obrigando moradores a expedir notificações extrajudiciais que continuam sem resposta. STJ REsp 1.266.016/DF: basta maioria simples dos presentes!">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fundamento 7 • Relação de Mandato e Convivência</div>
+          <h2 class="slide-title">Perda de Confiança & Sensação de Hostilidade</h2>
+          <p class="slide-subtitle">Esgotamento de ciclo de 9 anos, falta de respostas a questionamentos legítimos e notificações ignoradas</p>
+        </div>
+        <div class="slide-badge-num">10 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <!-- Desgaste (Ajustado Conforme Instrução) -->
+          <div class="card alert" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Sensação de Hostilidade e Intimidação</span>
+              <span class="card-badge badge-red">Desgaste Contínuo</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Falta de Respostas Objetivas e Claras:</strong> Ausência crônica de esclarecimentos a questionamentos legítimos dos proprietários sobre obras e finanças, <strong>o que vem forçando moradores a expedir diversas Notificações Extrajudiciais que, da mesma forma, não são respondidas</strong>.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Clima de Insegurança e Temor:</strong> Moradores relataram receio de apresentar questionamentos, críticas ou solicitações de esclarecimentos à administração por temor de constrangimentos, conflitos ou retaliações.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Litígios Contra Vizinhos:</strong> Utilização dos recursos do condomínio para notificar e processar moradores que apenas buscavam exercer o legítimo direito de fiscalização.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Renovação -->
+          <div class="card primary" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Por que a Renovação é Indispensável?</span>
+              <span class="card-badge badge-blue">Alternância Sadia</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-check">✓</span>
+                <div><strong>Ninguém é insubstituível:</strong> 9 anos ininterruptos geram vícios, reatividade e distanciamento. Empreendimentos modernos exigem governança profissional e periódica alternância.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-check">✓</span>
+                <div><strong>Resgate do Valor Patrimonial:</strong> O Belvedere tem perdido atratividade e valor relativo de mercado frente a lançamentos e edifícios bem geridos no Bairro América.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-check">✓</span>
+                <div><strong>Pacificação Interna:</strong> Encerrar litígios, extinguir o clima persecutório e resgatar o orgulho de viver no condomínio.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout-box">
+          <span>⚖️</span>
+          <div>
+            <strong>Jurisprudência Pacífica do STJ (REsp 1.266.016/DF):</strong> O síndico exerce mandato fiduciário. Havendo administração não conveniente, quebra de confiança ou irregularidades administrativas, basta a deliberação da <strong>maioria simples dos presentes à assembleia</strong> para sua destituição.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Artigo 1.349 do Código Civil e STJ REsp 1.266.016/DF</span>
+        <span>Avaliação Política e Jurídica da Gestão</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 11: FATO NOVO 1 - ORÇAMENTOS VICIADOS DA AGE 30/09
+         ========================================== -->
+    <section class="slide" data-index="10" data-notes="FATO NOVO DE ALTO IMPACTO TÉCNICO! Revelar os vícios matemáticos da AGE de 30/09/2026 (orçamento de R$ 230 mil). A Engetec cobrou EXATAMENTE 1,2296x os preços da Aline Antunes em todos os itens! O total da JR Obras bateu até os centavos com a Engetec! Orçamento vencido desde junho e 4 madeiras diferentes sem memorial descritivo.">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fato Novo • Auditoria da AGE de 30/09/2026</div>
+          <h2 class="slide-title">Anomalias Graves nos Orçamentos de R$ 230 Mil</h2>
+          <p class="slide-subtitle">Votação aberta com multiplicadores matemáticos idênticos, erros tributários e propostas vencidas</p>
+        </div>
+        <div class="slide-badge-num">11 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <!-- Multiplicador matemático -->
+        <div class="math-callout">
+          <div>
+            <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: #f87171; letter-spacing: 0.05em;">Multiplicador Idêntico em Todos os Itens</div>
+            <div style="color: #fff; font-size: 0.95rem; font-weight: 600; margin-top: 2px;">
+              Valores unitários da empresa Engetec = <strong>1,2296 vezes</strong> os valores da empresa Aline Antunes
+            </div>
+          </div>
+          <div class="math-factor">FATOR 1,2296×</div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 4px;">
+          <!-- Item 1 Halls -->
+          <div class="card alert">
+            <div class="card-header">
+              <span class="card-title" style="font-size: 0.92rem;">Revitalização dos Halls</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div>Valor da <strong>JR Obras coincidiu até os centavos</strong> com o total da Engetec.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div>Erro matemático tributário formal na proposta da Aline Antunes reconhecido pela gestão durante a votação.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div>Ausência de CNPJ informado aos moradores.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Item 2 Estofados -->
+          <div class="card warning">
+            <div class="card-header">
+              <span class="card-title" style="font-size: 0.92rem;">Reforma de Estofados</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div>Orçamento da empresa Rode com <strong>validade formal expirada em 12/06/2026</strong> mantido nos anexos da assembleia.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div>Empresa Center orçou <strong>02 poltronas</strong>, enquanto as concorrentes orçaram <strong>04 poltronas</strong>.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div>Validação alegada "por telefone", sem documento retificado.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Item 3 Deck -->
+          <div class="card alert">
+            <div class="card-header">
+              <span class="card-title" style="font-size: 0.92rem;">Deck da Piscina</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div>Orçamento de menor valor emitido no próprio dia de abertura da votação.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>4 madeiras completamente distintas:</strong> Cambará, Itaúba, Grápia e Tatajuba.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div>Ausência de memorial descritivo comum: votou-se pelo menor preço sem padronização de durabilidade.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout-box" style="margin-top: 2px;">
+          <span>🔍</span>
+          <div>
+            <strong>Conclusão Técnica:</strong> Submeter os condôminos a deliberar sobre um aporte de aproximadamente <strong>R$ 230.000,00</strong> nessas condições fere frontalmente o dever de governança, conformidade e instrução adequada dos atos decisórios.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Relatório de Auditoria de 30/09/2026 e Documentos Anexos da AGE</span>
+        <span>Princípios de Compliance e Licitação Condominial</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 12: FATO NOVO 2 - REMOÇÃO DO PÓRTICO SEM LAUDO
+         ========================================== -->
+    <section class="slide" data-index="11" data-notes="FATO RECENTÍSSIMO E GRAVÍSSIMO DE OUTUBRO/2026! A administração removeu o pórtico da fachada sem assembleia prévia, sem 3 orçamentos e sem contratos. Notificada em 01/10/2026, deu resposta evasiva. Na AGE de 07/10/2026, o Eng. Salomão confessou que NÃO EXISTE LAUDO TÉCNICO recomendando a retirada!">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Fato Novo • Ocorrência de Outubro / 2026</div>
+          <h2 class="slide-title">Demolição do Pórtico de Entrada: Sem Laudo e Sem Assembleia</h2>
+          <p class="slide-subtitle">Alteração da concepção arquitetônica da fachada sem deliberação prévia e sem prestação de contas</p>
+        </div>
+        <div class="slide-badge-num">12 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <!-- A Ocorrência -->
+          <div class="card alert" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">A Intervenção Arbitrária no Portal</span>
+              <span class="card-badge badge-red">Gravidade Máxima</span>
+            </div>
+            <p class="card-text">
+              Recentemente, foi realizada a intervenção e remoção de elemento da arquitetura original do portal de entrada sem a prévia apresentação de documentos aos proprietários:
+            </p>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Notificação de 01/10/2026:</strong> Morador cobrou ata de aprovação, contratos, notas fiscais, custos e laudos técnicos que embasassem a remoção.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>Resposta Vazia em 07/10/2026:</strong> A gestão alegou apenas "risco de corrosão preventiva", sem exibir contratos, notas ou 3 orçamentos.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-cross">✗</span>
+                <div><strong>CONFISSÃO AO VIVO EM 07/10/2026:</strong> Em plena reunião de assembleia, questionado diretamente por moradores, o <strong>Engenheiro Salomão afirmou categoricamente que NÃO EXISTE laudo técnico recomendando a retirada total do portal!</strong></div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Violações Convencionais -->
+          <div class="card warning" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Violações Expressas da Convenção</span>
+              <span class="card-badge badge-amber">Desrespeito às Normas</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div><strong>Artigo 4º, §5º (Uniformidade Estética):</strong> Proíbe expressamente alterações na estética da fachada e elementos visíveis externamente sem aprovação convencional.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div><strong>Artigo 18, §§16 e 17 (Obras Estruturais e Orçamentos):</strong> Exige 3 orçamentos para gastos acima de 1 salário-mínimo e <strong>prévia aprovação assemblear</strong> para obras que afetem a estrutura ou serviços comuns.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-warn">!</span>
+                <div><strong>Artigo 5º, §4º, "M" e "N" (Prestação de Contas):</strong> Dever indelegável da síndica de exibir documentos comprobatórios e manter a guarda organizada do acervo documental.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout-box">
+          <span>🚨</span>
+          <div>
+            <strong>Fundamento Irrefutável para Destituição:</strong> A demolição de elemento arquitetônico estrutural da fachada do condomínio desprovida de laudo técnico, sem orçamentos comparativos e sem aprovação assemblear prévia consubstancia irregularidade gravíssima e descumprimento inescusável do dever de prestar contas.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Reunião de 07/10/2026, Notificação de 01/10/2026 e Art. 4º, §5º e Art. 18 da Convenção</span>
+        <span>Descumprimento Gravoso da Convenção</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 13: O PLANO DE TRANSIÇÃO RESPONSÁVEL
+         ========================================== -->
+    <section class="slide" data-index="12" data-notes="TRANSIÇÃO SEGURA E RESPONSÁVEL! Mostrar que o grupo pensou em tudo. Não haverá vácuo ou descontinuidade. Assembleia de eleição marcada já para 20/10 com 3 síndicos profissionais cotados, abertura a qualquer condômino, mandato-tampão e Comissão de Transição composta pelo Conselho Fiscal em exercício + moradores eleitos.">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Planejamento e Governança • Itens 4 e 5 do Edital</div>
+          <h2 class="slide-title">Plano de Transição Responsável & Nova Eleição</h2>
+          <p class="slide-subtitle">Como garantiremos a continuidade operacional, a auditoria de contas e a escolha do novo gestor</p>
+        </div>
+        <div class="slide-badge-num">13 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3">
+          <!-- Passo 1 -->
+          <div class="card primary">
+            <span class="card-badge badge-blue">1ª Etapa • 20/10/2026</span>
+            <h3 class="card-title" style="margin-top: 8px;">Eleição do Novo Síndico</h3>
+            <p class="card-text" style="font-size: 0.85rem; margin-top: 6px;">
+              • O grupo apresentará <strong>03 profissionais de sindicatura de ponta</strong>, qualificados e com propostas transparentes.<br><br>
+              • Aberto a qualquer condômino indicar outros profissionais ou candidatar-se como morador (prazo de 48h antes da AGE).<br><br>
+              • <strong>Mandato-tampão:</strong> limitado ao período remanescente (Art. 15, §14 da Convenção).
+            </p>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="card success">
+            <span class="card-badge badge-green">2ª Etapa • Fiscalização</span>
+            <h3 class="card-title" style="margin-top: 8px;">Comissão de Transição (5 Membros)</h3>
+            <p class="card-text" style="font-size: 0.85rem; margin-top: 6px;">
+              • Composta obrigatoriamente pelos membros do <strong>Conselho Fiscal em exercício</strong> + moradores eleitos na AGE.<br><br>
+              • Acompanhamento e auditoria em tempo real de cada etapa de transferência da documentação, saldos e contratos.
+            </p>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="card warning">
+            <span class="card-badge badge-amber">3ª Etapa • Formalização</span>
+            <h3 class="card-title" style="margin-top: 8px;">Inventário & Acessos</h3>
+            <p class="card-text" style="font-size: 0.85rem; margin-top: 6px;">
+              • Transferência documentada de:<br>
+              &nbsp;&nbsp;✔ Saldos de caixa e aplicações;<br>
+              &nbsp;&nbsp;✔ Contratos vigentes e processos;<br>
+              &nbsp;&nbsp;✔ Senhas bancárias e sistemas de gestão;<br>
+              &nbsp;&nbsp;✔ Inventário do patrimônio físico.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout-box" style="margin-top: 4px;">
+          <span>🛡️</span>
+          <div>
+            <strong>Estabilidade Institucional Garantida:</strong> A Administradora atual continuará prestando suporte financeiro, cobrança e suporte contábil regular durante todo o processo de transição, afastando qualquer risco de paralisação no condomínio.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Itens 4 e 5 do Edital de Convocação • Artigo 15, §14 da Convenção</span>
+        <span>Rito de Transição e Eleição em 20/10/2026</span>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 14: COMO VOTAR & CONCLUSÃO
+         ========================================== -->
+    <section class="slide" data-index="13" data-notes="Fechamento emocionante e esclarecedor. Enfatizar as instruções do voto eletrônico no SurveyMonkey de 13/10 a 15/10 às 20h. Reforçar que procurações devem ser assinadas via gov.br ou firma em cartório. Convidar a todos a votar pela união, transparência e valorização do Residencial Belvedere!">
+      <div class="slide-top">
+        <div>
+          <div class="slide-tag">Participação Democrática • Deliberação Oficial</div>
+          <h2 class="slide-title">Como Exercer Seu Direito de Voto & Decisão Consciente</h2>
+          <p class="slide-subtitle">Votação contínua e segura para garantir a máxima representatividade de todos os 118 lares</p>
+        </div>
+        <div class="slide-badge-num">14 / 14</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <!-- Votação SurveyMonkey -->
+          <div class="card success" style="gap: 12px;">
+            <div class="card-header">
+              <span class="card-title">Instruções para Votação Eletrônica</span>
+              <span class="card-badge badge-green">SurveyMonkey</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="list-icon icon-arrow">1</span>
+                <div><strong>Início da Votação:</strong> Imediatamente após a reunião da AGE virtual em <strong>13/10/2026</strong>.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-arrow">2</span>
+                <div><strong>Prazo Final:</strong> Quinta-feira, <strong>15/10/2026 até às 20h00min</strong>.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-arrow">3</span>
+                <div>Acesse o link oficial constante do Edital:<br>
+                  <code style="color: var(--accent-cyan); background: rgba(0,0,0,0.4); padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; font-family: var(--font-mono); word-break: break-all;">https://pt.surveymonkey.com/r/XV3CRVT</code>
+                </div>
+              </li>
+              <li>
+                <span class="list-icon icon-arrow">4</span>
+                <div>Identifique a sua unidade, manifeste seu voto e envie a confirmação.</div>
+              </li>
+              <li>
+                <span class="list-icon icon-arrow">5</span>
+                <div><strong>Fiscalização:</strong> A apuração dos votos poderá ser acompanhada por até 03 condôminos fiscais.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Apelo pelo Futuro -->
+          <div class="card primary" style="justify-content: center; text-align: center; gap: 14px; padding: 24px;">
+            <div class="brand-icon-box" style="align-self: center; width: 44px; height: 44px; font-size: 1.4rem;">B</div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; line-height: 1.25;">
+              O Futuro e a Valorização do Residencial Belvedere em Nossas Mãos
+            </h3>
+            <p class="card-text" style="font-size: 0.88rem;">
+              Esta assembleia representa o compromisso com a legalidade, o respeito às finanças familiares de 118 proprietários e a busca por um condomínio moderno, harmônico e valorizado no mercado.
+            </p>
+            <div style="background: rgba(37,99,235,0.15); border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; padding: 10px 14px; font-size: 0.82rem; color: var(--accent-cyan); font-weight: 600;">
+              ⚖️ Vote pela transparência, conformidade e profissionalismo.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Art. 1.354-A do Código Civil (Lei 14.309/2022) • Votação Continuada</span>
+        <span>Condomínio Residencial Belvedere Joinville • Outubro/2026</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Deck Bottom Controls -->
+  <footer class="deck-controls">
+    <div class="nav-hints">
+      <span>Navegação: <span class="key-badge">←</span> <span class="key-badge">→</span> ou <span class="key-badge">Espaço</span></span>
+      <span>•</span>
+      <span>Menu: <span class="key-badge">M</span></span>
+      <span>•</span>
+      <span>Roteiro: <span class="key-badge">N</span></span>
+      <span>•</span>
+      <span>Tela Cheia: <span class="key-badge">F</span></span>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="ctrl-btn" id="btn-prev" disabled>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>Anterior</span>
+      </button>
+
+      <div class="slide-counter" id="slide-counter">Slide 1 de 14</div>
+
+      <button class="ctrl-btn" id="btn-next">
+        <span>Próximo</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Speaker Notes Drawer (Roteiro do Orador) -->
+  <div class="speaker-drawer" id="speaker-drawer">
+    <div class="speaker-header">
+      <div class="speaker-header-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+        <span>Roteiro / Notas do Apresentador</span>
+      </div>
+      <button class="speaker-close" id="btn-close-notes">&times;</button>
+    </div>
+    <div class="speaker-body" id="speaker-content">
+      <!-- Inserido dinamicamente via JS -->
+    </div>
+  </div>
+
+  <!-- Slide Overview Modal (Grade de Slides) -->
+  <div class="overview-modal" id="overview-modal">
+    <div class="overview-header">
+      <div>
+        <h2 style="font-family: var(--font-heading); color: #fff; font-size: 1.4rem;">Grade Completa dos Slides</h2>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Clique em qualquer slide para saltar diretamente para ele</p>
+      </div>
+      <button class="ctrl-btn" id="btn-close-overview">Fechar (Esc)</button>
+    </div>
+    <div class="overview-grid" id="overview-grid">
+      <!-- Inserido dinamicamente via JS -->
+    </div>
+  </div>
+
+  <!-- Universal Document / Attachment Modal -->
+  <div class="doc-modal" id="doc-modal">
+    <div class="doc-modal-container">
+      <div class="doc-modal-header">
+        <div class="doc-modal-title" id="doc-modal-title">
+          <span>Visualizador de Documento</span>
+        </div>
+        <button class="speaker-close" id="btn-close-doc" style="font-size: 1.4rem;">&times;</button>
+      </div>
+      <div class="doc-modal-body" id="doc-modal-body">
+        <!-- Conteúdo do documento inserido via JS -->
+      </div>
+      <div class="doc-modal-footer">
+        <span id="doc-modal-caption" style="font-size: 0.82rem; color: var(--text-dim);">Documento arquivado no projeto</span>
+        <a id="doc-modal-link" href="#" target="_blank" class="attachment-btn" style="font-size: 0.8rem; padding: 6px 14px;">
+          Abrir Arquivo em Nova Guia ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+
+      // DOM Elements
+      const prevBtn = document.getElementById('btn-prev');
+      const nextBtn = document.getElementById('btn-next');
+      const counter = document.getElementById('slide-counter');
+      const progressFill = document.getElementById('progress-fill');
+      const notesBtn = document.getElementById('btn-notes');
+      const notesDrawer = document.getElementById('speaker-drawer');
+      const closeNotesBtn = document.getElementById('btn-close-notes');
+      const notesContent = document.getElementById('speaker-content');
+      const overviewBtn = document.getElementById('btn-overview');
+      const overviewModal = document.getElementById('overview-modal');
+      const closeOverviewBtn = document.getElementById('btn-close-overview');
+      const overviewGrid = document.getElementById('overview-grid');
+      const fullscreenBtn = document.getElementById('btn-fullscreen');
+      const timerElement = document.getElementById('presentation-timer');
+
+      // Modal de Documentos
+      const docModal = document.getElementById('doc-modal');
+      const docModalTitle = document.getElementById('doc-modal-title');
+      const docModalBody = document.getElementById('doc-modal-body');
+      const docModalCaption = document.getElementById('doc-modal-caption');
+      const docModalLink = document.getElementById('doc-modal-link');
+      const closeDocBtn = document.getElementById('btn-close-doc');
+
+      // Cronômetro da Apresentação
+      let secondsElapsed = 0;
+      setInterval(() => {
+        secondsElapsed++;
+        const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+        const secs = String(secondsElapsed % 60).padStart(2, '0');
+        timerElement.textContent = `${mins}:${secs}`;
+      }, 1000);
+
+      // Constrói a grade no Overview
+      slides.forEach((slide, idx) => {
+        const titleEl = slide.querySelector('.slide-title');
+        const titleText = titleEl ? titleEl.textContent : `Slide ${idx + 1}`;
+        const card = document.createElement('div');
+        card.className = `overview-card ${idx === 0 ? 'current' : ''}`;
+        card.innerHTML = `
+          <div class="overview-num">SLIDE ${String(idx + 1).padStart(2, '0')}</div>
+          <div class="overview-title">${titleText}</div>
+        `;
+        card.addEventListener('click', () => {
+          goToSlide(idx);
+          overviewModal.classList.remove('open');
+        });
+        overviewGrid.appendChild(card);
+      });
+
+      function updateSlideClasses(newIndex) {
+        slides.forEach((slide, idx) => {
+          slide.classList.remove('active', 'prev');
+          if (idx === newIndex) {
+            slide.classList.add('active');
+          } else if (idx < newIndex) {
+            slide.classList.add('prev');
+          }
+        });
+
+        // Atualiza Overview
+        const overviewCards = overviewGrid.querySelectorAll('.overview-card');
+        overviewCards.forEach((c, i) => {
+          c.classList.toggle('current', i === newIndex);
+        });
+
+        // Atualiza UI
+        counter.textContent = `Slide ${newIndex + 1} de ${totalSlides}`;
+        progressFill.style.width = `${((newIndex + 1) / totalSlides) * 100}%`;
+        prevBtn.disabled = newIndex === 0;
+        nextBtn.disabled = newIndex === totalSlides - 1;
+
+        // Atualiza Roteiro do Orador
+        const currentSlide = slides[newIndex];
+        const notes = currentSlide.getAttribute('data-notes') || 'Sem anotações específicas.';
+        const title = currentSlide.querySelector('.slide-title')?.textContent || '';
+        notesContent.innerHTML = `
+          <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 6px;">Pauta do Slide:</h4>
+          <p style="color: var(--accent-cyan); font-weight: 700; margin-bottom: 12px;">${title}</p>
+          <div style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent-cyan); padding: 10px 14px; border-radius: 0 8px 8px 0; color: #f1f5f9; line-height: 1.6;">
+            ${notes}
+          </div>
+        `;
+      }
+
+      function goToSlide(index) {
+        if (index < 0 || index >= totalSlides) return;
+        currentIndex = index;
+        updateSlideClasses(currentIndex);
+      }
+
+      function nextSlide() {
+        if (currentIndex < totalSlides - 1) {
+          goToSlide(currentIndex + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentIndex > 0) {
+          goToSlide(currentIndex - 1);
+        }
+      }
+
+      // Controles
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+
+      // Atalhos de Teclado
+      window.addEventListener('keydown', (e) => {
+        // Se modal de documento estiver aberto, fecha com ESC
+        if (docModal.classList.contains('open')) {
+          if (e.key === 'Escape') {
+            docModal.classList.remove('open');
+          }
+          return;
+        }
+
+        // Se modal de overview estiver aberto, fecha com ESC
+        if (overviewModal.classList.contains('open')) {
+          if (e.key === 'Escape') {
+            overviewModal.classList.remove('open');
+          }
+          return;
+        }
+
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'PageDown':
+          case ' ':
+            e.preventDefault();
+            nextSlide();
+            break;
+          case 'ArrowLeft':
+          case 'PageUp':
+            e.preventDefault();
+            prevSlide();
+            break;
+          case 'Home':
+            e.preventDefault();
+            goToSlide(0);
+            break;
+          case 'End':
+            e.preventDefault();
+            goToSlide(totalSlides - 1);
+            break;
+          case 'f':
+          case 'F':
+            toggleFullScreen();
+            break;
+          case 'n':
+          case 'N':
+            toggleNotes();
+            break;
+          case 'm':
+          case 'M':
+            toggleOverview();
+            break;
+        }
+      });
+
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+        notesBtn.classList.toggle('active', notesDrawer.classList.contains('open'));
+      }
+      notesBtn.addEventListener('click', toggleNotes);
+      closeNotesBtn.addEventListener('click', () => {
+        notesDrawer.classList.remove('open');
+        notesBtn.classList.remove('active');
+      });
+
+      function toggleOverview() {
+        overviewModal.classList.toggle('open');
+      }
+      overviewBtn.addEventListener('click', toggleOverview);
+      closeOverviewBtn.addEventListener('click', () => {
+        overviewModal.classList.remove('open');
+      });
+
+      function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.error(err.message);
+          });
+          fullscreenBtn.classList.add('active');
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+            fullscreenBtn.classList.remove('active');
+          }
+        }
+      }
+      fullscreenBtn.addEventListener('click', toggleFullScreen);
+
+      // Modal de Anexos / Documentos
+      window.openDocModal = function(title, contentHtml, caption, linkUrl) {
+        docModalTitle.innerHTML = title;
+        docModalBody.innerHTML = contentHtml;
+        docModalCaption.textContent = caption || 'Documento comprobatório';
+        if (linkUrl) {
+          docModalLink.href = linkUrl;
+          docModalLink.style.display = 'inline-flex';
+        } else {
+          docModalLink.style.display = 'none';
+        }
+        docModal.classList.add('open');
+      };
+
+      window.openPhotoModal = function(imgSrc, title, desc) {
+        const html = `
+          <img src="${imgSrc}" alt="${title}">
+          <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent-red-light); padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 10px;">
+            <h4 style="color: #fff; font-size: 1rem; margin-bottom: 4px;">${title}</h4>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5;">${desc}</p>
+          </div>
+        `;
+        openDocModal(`📷 Registro Fotográfico: ${title}`, html, 'Relatório Fotográfico de Não Conformidades (23/04/2026)', imgSrc);
+      };
+
+      closeDocBtn.addEventListener('click', () => {
+        docModal.classList.remove('open');
+      });
+
+      // Handlers de Documentos Específicos
+      // 1. Notificação Ronaldo Bez Batti (Slide 6)
+      const btnNotif = document.getElementById('btn-open-notificacao');
+      if (btnNotif) {
+        btnNotif.addEventListener('click', () => {
+          const content = `
+            <div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 16px; margin-bottom: 12px;">
+              <h3 style="color: #f87171; font-size: 1.1rem; margin-bottom: 6px;">Notificação Extrajudicial Emitida em 31 de Julho de 2026</h3>
+              <p style="font-size: 0.88rem; color: #f1f5f9; line-height: 1.5;">
+                <strong>Notificante:</strong> Condomínio Residencial Belvedere Joinville (Repres. por Síndica Diane Luisa Agazzi)<br>
+                <strong>Notificado:</strong> Ronaldo Bez Batti (Condômino Apto 504-A)<br>
+                <strong>Advocacia:</strong> Alexandre Aguiar Advocacia (OAB/SC 9.446)
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted);">
+              <h4 style="color: #fff; margin-bottom: 8px;">Trecho Principal da Acusação (Item I dos Fatos):</h4>
+              <blockquote style="border-left: 3px solid var(--accent-red); padding-left: 14px; font-style: italic; color: #f8fafc; margin-bottom: 14px;">
+                "Por meio do sistema de monitoramento por câmeras (CFTV) instalado nas áreas comuns do Condomínio, verificou-se o ingresso do(a) NOTIFICADO ao canteiro de obras em datas e horários que se encontram documentados e arquivados pela administração condominial, sem que constasse cadastro prévio ou autorização..."
+              </blockquote>
+              <h4 style="color: #fff; margin-bottom: 8px;">Ameaça Expressa de Interdito Proibitório (Item IV):</h4>
+              <blockquote style="border-left: 3px solid var(--accent-amber); padding-left: 14px; font-style: italic; color: #f8fafc; margin-bottom: 14px;">
+                "...bem como, em tese, a adoção de medida possessória de interdito proibitório, nos termos do artigo 567 do Código de Processo Civil..."
+              </blockquote>
+              <div style="background: rgba(239,68,68,0.15); padding: 12px; border-radius: 8px; color: #fecaca; font-weight: 600;">
+                ⚠️ Realidade Fática: Nenhuma foto ou vídeo foi anexada. Não havia canteiro isolado ou tapumes. Tratou-se de uso indevido do aparato condominial para intimidar condômino que exercia o legítimo direito de fiscalização.
+              </div>
+            </div>
+          `;
+          openDocModal('📄 Notificação Extrajudicial: Ronaldo Bez Batti', content, 'Notificação Extrajudicial de 31/07/2026', 'notificacao_ronaldo_bez_batti.pdf');
+        });
+      }
+
+      // 2. Orçamento Paulo Sérgio (Slide 7)
+      const btnPaulo = document.getElementById('btn-open-paulo');
+      if (btnPaulo) {
+        btnPaulo.addEventListener('click', () => {
+          const content = `
+            <div style="background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; padding: 16px; margin-bottom: 12px;">
+              <h3 style="color: var(--accent-cyan); font-size: 1.1rem; margin-bottom: 4px;">Orçamento Paulo Sérgio Pereira Júnior (Nº 15/26)</h3>
+              <p style="font-size: 0.88rem; color: #fff;">
+                <strong>Data de Emissão:</strong> 31 de Março de 2026 &nbsp;•&nbsp; <strong>Valor Total:</strong> R$ 84.324,24
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              <p><strong>Objeto:</strong> Recuperação do sistema de revestimento e recomposição da borda estrutural da piscina do Edifício Belvedere.</p>
+              <p><strong>Normas citadas:</strong> ABNT NBR 6118, NBR 14931, NBR 7200, NBR 13749, NBR 15575, NBR 9575/9574.</p>
+              <p><strong>Metodologia:</strong> Preparação, demolição controlada, tratamento do substrato, recomposição com chapisco, tela galvanizada e reboco técnico, pingadeira e guarda-corpo.</p>
+              <p style="margin-top: 10px; color: var(--accent-amber-light); font-weight: 600;">
+                ⚠️ Observe: Este documento foi copiado na íntegra (texto, erros e fotos) pela empresa JC Battisti 22 dias depois, com acréscimo de mais de R$ 21 mil!
+              </p>
+            </div>
+          `;
+          openDocModal('📄 Proposta Paulo Sérgio Pereira Júnior', content, 'Orçamento Paulo – 15/26 (31/03/2026)', 'orcamento_paulo_sergio.pdf');
+        });
+      }
+
+      // 3. Orçamento JC Battisti (Slide 7)
+      const btnJC = document.getElementById('btn-open-jc');
+      if (btnJC) {
+        btnJC.addEventListener('click', () => {
+          const content = `
+            <div style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 16px; margin-bottom: 12px;">
+              <h3 style="color: var(--accent-amber-light); font-size: 1.1rem; margin-bottom: 4px;">Orçamento JC Battisti Engenharia Ltda (Nº 15/26 1)</h3>
+              <p style="font-size: 0.88rem; color: #fff;">
+                <strong>Data de Emissão:</strong> 22 de Abril de 2026 &nbsp;•&nbsp; <strong>Valor Total:</strong> R$ 105.600,00
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              <div style="background: rgba(239,68,68,0.12); padding: 12px; border-radius: 8px; color: #fecaca; margin-bottom: 12px;">
+                <strong>🚨 Cópia Integral Comprovada (Clone Textual):</strong><br>
+                O texto dos itens 1, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 3, 5, 6, 7 e as fotos das páginas 4, 5 e 6 são <strong>IDÊNTICOS</strong> ao orçamento de Paulo Sérgio emitido em março!<br>
+                Até o erro de duplicidade de prazo (Item "9. PRAZO A definir" antes de "3. Prazo dos Serviços") foi copiado palavra por palavra.
+              </div>
+              <p><strong>Preço Paulo Sérgio:</strong> R$ 84.324,24</p>
+              <p><strong>Preço JC Battisti:</strong> R$ 105.600,00</p>
+              <p><strong>Diferença não justificada:</strong> <strong style="color: #f87171;">+ R$ 21.275,76 (+25,2%)</strong></p>
+              <p style="margin-top: 8px;">Isso comprova que a administração <strong>não fez qualquer revisão ou conferência técnica</strong> dos orçamentos antes de utilizá-los.</p>
+            </div>
+          `;
+          openDocModal('📄 Proposta JC Battisti Engenharia', content, 'Orçamento JCBattisti – 15/26 1 (22/04/2026)', 'orcamento_jc_battisti.pdf');
+        });
+      }
+
+      // 4. Relatório Fotográfico Completo (Slide 9)
+      const btnRelat = document.getElementById('btn-open-relatorio');
+      if (btnRelat) {
+        btnRelat.addEventListener('click', () => {
+          const content = `
+            <div style="background: rgba(37,99,235,0.12); border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; padding: 16px; margin-bottom: 12px;">
+              <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">Relatório Fotográfico de Não Conformidades do Condomínio Belvedere</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-cyan);">
+                <strong>Autor:</strong> Charles Ender (Proprietário Apto 401 A) &nbsp;•&nbsp; <strong>Data:</strong> 23 de Abril de 2026 &nbsp;•&nbsp; 22 Páginas
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6;">
+              <h4 style="color: #fff; margin-bottom: 8px;">14 Não Conformidades Registradas com Normas da ABNT:</h4>
+              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 6px;">
+                <li><strong>1. Sinalização de Emergência:</strong> Luminária pendurada pela fiação sob risco de curto e incêndio (NBR 13434 / NBR 5410).</li>
+                <li><strong>2. Viga/Pilar da Garagem:</strong> Esmagamento de topo com exposição de armadura e risco estrutural (NBR 6118).</li>
+                <li><strong>3. Casa do Quadro Elétrico:</strong> Fissuras e risco de infiltração junto à porta de Alta Tensão (NBR 15575 / NR-10).</li>
+                <li><strong>4. Soleira do Elevador Torre A:</strong> Múltiplas trincas transversais e desnível com risco de queda (NBR 9050 / NBR 15575-3).</li>
+                <li><strong>5. Estofados e Tapetes:</strong> Manchas, sujidade e proliferação de ácaros nos halls A e B (NBR 13532).</li>
+                <li><strong>6. Acesso Garagem Torre A:</strong> Fissuras em quinas e espelhos elétricos desgastados (NBR 15575-4).</li>
+                <li><strong>7 e 8. Canteiros e Rampa Lixeira:</strong> Lona plástica improvisada, erosão e rampa esfarelando sem antiderrapante (NBR 9050).</li>
+                <li><strong>9 e 10. Rampas e Escadas Torre A:</strong> Desplacamento severo de reboco e fixação de corrimão em base degradada.</li>
+                <li><strong>11. Viga Elevada / Pórtico Torre A:</strong> Desplacamento crítico de concreto e armadura exposta (Gravidade CRÍTICA).</li>
+                <li><strong>12 e 13. Muro e Gradil Rua Tijucas:</strong> Oxidação do metal e escorrimento ferruginoso manchando a fachada.</li>
+                <li><strong>14. Paisagismo:</strong> Plantas mortas e troncos em decomposição na entrada do condomínio.</li>
+              </ul>
+            </div>
+          `;
+          openDocModal('📄 Relatório Técnico de Não Conformidades (22 Páginas)', content, 'Relatório Fotográfico Completo (23/04/2026)', 'relatorio_fotografico.pdf');
+        });
+      }
+
+      // Inicia no primeiro slide
+      updateSlideClasses(0);
+    })();
+  </script>
+</body>
+</html>

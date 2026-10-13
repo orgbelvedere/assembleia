@@ -896,6 +896,63 @@
       color: #f87171;
     }
 
+
+    /* ===== Responsivo (tablet/celular) ===== */
+    body { height: 100vh; height: 100dvh; }
+    @media (max-width: 900px) {
+      header.deck-header { padding: 10px 14px; gap: 8px; }
+      .brand-title { font-size: 0.85rem; }
+      .brand-title span { font-size: 0.62rem; }
+      .header-center, .header-btn span { display: none; }
+      .header-btn { padding: 8px 10px; }
+      main.deck-viewport { padding: 8px; align-items: stretch; }
+      .slide {
+        width: calc(100vw - 16px); height: 100%;
+        position: absolute; inset: 0; margin: auto;
+        padding: 18px 16px; border-radius: 14px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+      }
+      .slide-top { flex-direction: column-reverse; gap: 8px; margin-bottom: 10px; }
+      .slide-badge-num { align-self: flex-end; font-size: 0.72rem; padding: 3px 10px; }
+      .slide-title, .slide h1.slide-title { font-size: 1.3rem !important; }
+      .slide-subtitle { font-size: 0.82rem; }
+      .slide-tag { font-size: 0.64rem; }
+      .slide-body { justify-content: flex-start; flex: none; }
+      .grid-2, .grid-3, .grid-4, .photo-grid { grid-template-columns: 1fr; gap: 12px; }
+      .card { padding: 14px; }
+      .card-header { flex-wrap: wrap; gap: 6px; }
+      .slide-body > div[style*="radial-gradient"] { padding: 18px 14px !important; }
+      .slide-body h2[style] { font-size: 1.4rem !important; }
+      .stat-num { font-size: 1.7rem; }
+      .math-callout { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .math-factor { font-size: 1.3rem; }
+      .bar-fill { font-size: 0.62rem; padding: 0 6px; }
+      .bar-labels { flex-direction: column; gap: 2px; font-size: 0.78rem; }
+      .bar-fill.overflow { white-space: normal; line-height: 1.1; }
+      .bar-track { height: auto; min-height: 22px; }
+      .photo-thumb-container { height: 180px; }
+      .slide-footer { flex-direction: column; align-items: flex-start; gap: 4px; font-size: 0.68rem; margin-top: 14px; }
+      .slide-footer span:last-child { display: none; }
+      footer.deck-controls { padding: 8px 10px; padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+      .nav-hints { display: none; }
+      .nav-buttons { width: 100%; justify-content: space-between; }
+      .ctrl-btn { padding: 10px 14px; }
+      .slide-counter { min-width: 0; font-size: 0.8rem; }
+      .doc-modal { padding: 8px; }
+      .doc-modal-container { width: 100%; max-height: 94dvh; }
+      .doc-modal-footer { flex-direction: column; gap: 8px; align-items: stretch; text-align: center; }
+      .overview-modal { padding: 16px; }
+      .overview-header { gap: 10px; }
+      .attachment-btn { justify-content: center; }
+      .slide-body div[style*="justify-content: space-between"] { flex-direction: column; gap: 10px; align-items: stretch !important; }
+    }
+    @media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+      header.deck-header { padding: 6px 14px; }
+      footer.deck-controls { padding: 4px 10px; }
+      .grid-3, .photo-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
     /* Print styles */
     @media print {
       @page {
@@ -995,10 +1052,6 @@
     </div>
 
     <div class="header-actions">
-      <button class="header-btn" id="btn-notes" title="Abrir Roteiro do Apresentador (Tecla N)">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-        <span>Roteiro / Notas</span>
-      </button>
       <button class="header-btn" id="btn-overview" title="Visão Geral de Todos os Slides (Tecla M)">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
         <span>Todos os Slides</span>
@@ -1020,7 +1073,7 @@
     <!-- ==========================================
          SLIDE 1: CAPA OFICIAL EM DESTAQUE
          ========================================== -->
-    <section class="slide active" data-index="0" data-notes="Abertura acolhedora, firme e elegante. Frisar que a assembleia representa a vontade legítima de mais de 30 proprietários de 118 lares. A intenção não é pessoal: é resgatar a governança, a transparência e valorizar o patrimônio coletivo do Belvedere.">
+    <section class="slide active" data-index="0">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Assembleia Geral Extraordinária Convocada por 1/4 dos Condôminos</div>
@@ -1076,7 +1129,7 @@
     <!-- ==========================================
          SLIDE 2: ESCLARECIMENTOS PRELIMINARES
          ========================================== -->
-    <section class="slide" data-index="1" data-notes="Desmistificar medos e desarmar tensões. O receio clássico é: 'A obra da fachada vai parar?'. Enfatizar enfaticamente que NÃO vai parar. Contratos são do CNPJ do condomínio. Esclarecer a razão do sigilo temporário das assinaturas (proteção contra retaliações).">
+    <section class="slide" data-index="1">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Contexto e Segurança dos Condôminos</div>
@@ -1156,7 +1209,7 @@
     <!-- ==========================================
          SLIDE 3: FUNDAMENTO 1 - FUNDO DE RESERVA
          ========================================== -->
-    <section class="slide" data-index="2" data-notes="Impacto financeiro gritante no bolso do morador! Apresentar o gráfico: o teto convencional é R$ 19.690,07 (5 arrecadações). O saldo real passou de MEIO MILHÃO DE REAIS (R$ 520.971,17). É mais de 25 vezes o teto! Cobrança ilegal de 10% vs 5% da convenção.">
+    <section class="slide" data-index="2">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fundamento 1 • Descumprimento da Convenção</div>
@@ -1223,7 +1276,7 @@
     <!-- ==========================================
          SLIDE 4: FUNDAMENTO 1.1 - FUNDO DE MANUTENÇÃO & CONVENÇÃO NÃO REGISTRADA
          ========================================== -->
-    <section class="slide" data-index="3" data-notes="Mostrar o impacto financeiro (R$ 132,55 pagos a mais por mês por cada unidade) E a fragilidade jurídica gravíssima: A convenção de 2017 NUNCA foi registrada em cartório pela síndica em 9 anos! Ela obriga os moradores internamente, mas é ineficaz contra terceiros (prestadores de serviços, seguradoras, visitantes).">
+    <section class="slide" data-index="3">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fundamento 1.1 • Descumprimento da Convenção & Fragilidade Jurídica</div>
@@ -1301,7 +1354,7 @@
     <!-- ==========================================
          SLIDE 5: FUNDAMENTO 2 - INÉRCIA CRÔNICA (AJUSTADO: REMOVIDAS CORTINAS/EXAUSTORES)
          ========================================== -->
-    <section class="slide" data-index="4" data-notes="Inércia e desrespeito à soberania da assembleia. Decisões aprovadas em fev/2024 e mar/2026 engavetadas por até 2 anos! Foco nos itens com certeza documental: Regimento Interno, Cancha de Bocha e Deck da Piscina. A administração só correu para colocar em pauta após o protocolo da AGE de destituição.">
+    <section class="slide" data-index="4">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fundamento 2 • Descumprimento de Decisões Soberanas</div>
@@ -1375,7 +1428,7 @@
     <!-- ==========================================
          SLIDE 6: FUNDAMENTO 3 - NOTIFICAÇÕES SEM PROVAS (COM ANEXO RONALDO BEZ BATTI)
          ========================================== -->
-    <section class="slide" data-index="5" data-notes="Quebra inaceitável do dever de urbanidade. Em 31/07/2026, 4 moradores que apenas fiscalizavam obras receberam notificações extrajudiciais acusando invasão de canteiro sem nenhuma prova anexada! O condomínio foi acionado na justiça com 2 processos abertos. Clicar no botão para abrir a notificação real do Ronaldo Bez Batti!">
+    <section class="slide" data-index="5">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fundamento 3 • Abuso de Instrumentos Jurídicos</div>
@@ -1443,7 +1496,7 @@
     <!-- ==========================================
          SLIDE 7: FUNDAMENTO 4 - REGRA DOS 3 ORÇAMENTOS & ANEXOS CLONADOS (PAULO SÉRGIO vs JC BATTISTI)
          ========================================== -->
-    <section class="slide" data-index="6" data-notes="Descumprimento flagrante do Artigo 18, §16 da Convenção. Na piscina, apresentaram apenas 1 orçamento de R$ 79.640,00 da Focus. E PIOR: a sindica não faz a revisão técnica dos orçamentos! Os orçamentos do Paulo Sérgio (R$ 84k) e da JC Battisti (R$ 105k) são CLONES idênticos palavra por palavra e com as mesmas fotos, com mais de R$ 21 mil de diferença, sem qualquer análise crítica da gestão!">
+    <section class="slide" data-index="6">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fundamento 4 • Violação Licitatória & Falta de Revisão</div>
@@ -1521,7 +1574,7 @@
     <!-- ==========================================
          SLIDE 8: FUNDAMENTO 5 - OPACIDADE NA CONTRATAÇÃO DA PISCINA
          ========================================== -->
-    <section class="slide" data-index="7" data-notes="Falta de transparência e ausência de cronograma físico-financeiro na obra da piscina. As decisões foram conduzidas por links de votação remota sem reuniões abertas nem debate prévio. Cronologia de pedidos formais de esclarecimentos de maio/2026 que não obtiveram respostas conclusivas da administração.">
+    <section class="slide" data-index="7">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fundamento 5 • Gestão Financeira e Contratual</div>
@@ -1595,7 +1648,7 @@
     <!-- ==========================================
          SLIDE 9: FUNDAMENTO 6 - ZELADORIA (COM FOTOS REAIS DO RELATÓRIO TÉCNICO)
          ========================================== -->
-    <section class="slide" data-index="8" data-notes="Evidências visuais irrefutáveis de negligência na zeladoria! Relatório do morador Charles Ender (22 páginas, NBR 6118, 15575, 5674). Mostrar as fotos reais: Soleira do elevador trincada, gradil da Rua Tijucas escorrendo ferrugem e estofados do hall encardidos. Risco no processo da Construtora Thá por falta de manutenção preventiva na drenagem. Clicar nas fotos para ampliar ou no botão para abrir o PDF completo.">
+    <section class="slide" data-index="8">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fundamento 6 • Evidências Fotográficas da Degradação</div>
@@ -1669,7 +1722,7 @@
     <!-- ==========================================
          SLIDE 10: FUNDAMENTO 7 - SENSAÇÃO DE HOSTILIDADE E FALTA DE RESPOSTAS (AJUSTADO)
          ========================================== -->
-    <section class="slide" data-index="9" data-notes="Perda irremediável de confiança. 'Sensação de Hostilidade e Intimidação'. Enfatizar a falta crônica de respostas objetivas aos questionamentos legítimos, obrigando moradores a expedir notificações extrajudiciais que continuam sem resposta. STJ REsp 1.266.016/DF: basta maioria simples dos presentes!">
+    <section class="slide" data-index="9">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fundamento 7 • Relação de Mandato e Convivência</div>
@@ -1743,7 +1796,7 @@
     <!-- ==========================================
          SLIDE 11: FATO NOVO 1 - ORÇAMENTOS VICIADOS DA AGE 30/09
          ========================================== -->
-    <section class="slide" data-index="10" data-notes="FATO NOVO DE ALTO IMPACTO TÉCNICO! Revelar os vícios matemáticos da AGE de 30/09/2026 (orçamento de R$ 230 mil). A Engetec cobrou EXATAMENTE 1,2296x os preços da Aline Antunes em todos os itens! O total da JR Obras bateu até os centavos com a Engetec! Orçamento vencido desde junho e 4 madeiras diferentes sem memorial descritivo.">
+    <section class="slide" data-index="10">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fato Novo • Auditoria da AGE de 30/09/2026</div>
@@ -1847,7 +1900,7 @@
     <!-- ==========================================
          SLIDE 12: FATO NOVO 2 - REMOÇÃO DO PÓRTICO SEM LAUDO
          ========================================== -->
-    <section class="slide" data-index="11" data-notes="FATO RECENTÍSSIMO E GRAVÍSSIMO DE OUTUBRO/2026! A administração removeu o pórtico da fachada sem assembleia prévia, sem 3 orçamentos e sem contratos. Notificada em 01/10/2026, deu resposta evasiva. Na AGE de 07/10/2026, o Eng. Salomão confessou que NÃO EXISTE LAUDO TÉCNICO recomendando a retirada!">
+    <section class="slide" data-index="11">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Fato Novo • Ocorrência de Outubro / 2026</div>
@@ -1924,7 +1977,7 @@
     <!-- ==========================================
          SLIDE 13: O PLANO DE TRANSIÇÃO RESPONSÁVEL
          ========================================== -->
-    <section class="slide" data-index="12" data-notes="TRANSIÇÃO SEGURA E RESPONSÁVEL! Mostrar que o grupo pensou em tudo. Não haverá vácuo ou descontinuidade. Assembleia de eleição marcada já para 20/10 com 3 síndicos profissionais cotados, abertura a qualquer condômino, mandato-tampão e Comissão de Transição composta pelo Conselho Fiscal em exercício + moradores eleitos.">
+    <section class="slide" data-index="12">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Planejamento e Governança • Itens 4 e 5 do Edital</div>
@@ -1988,7 +2041,7 @@
     <!-- ==========================================
          SLIDE 14: COMO VOTAR & CONCLUSÃO
          ========================================== -->
-    <section class="slide" data-index="13" data-notes="Fechamento emocionante e esclarecedor. Enfatizar as instruções do voto eletrônico no SurveyMonkey de 13/10 a 15/10 às 20h. Reforçar que procurações devem ser assinadas via gov.br ou firma em cartório. Convidar a todos a votar pela união, transparência e valorização do Residencial Belvedere!">
+    <section class="slide" data-index="13">
       <div class="slide-top">
         <div>
           <div class="slide-tag">Participação Democrática • Deliberação Oficial</div>
@@ -2063,8 +2116,6 @@
       <span>•</span>
       <span>Menu: <span class="key-badge">M</span></span>
       <span>•</span>
-      <span>Roteiro: <span class="key-badge">N</span></span>
-      <span>•</span>
       <span>Tela Cheia: <span class="key-badge">F</span></span>
     </div>
 
@@ -2082,20 +2133,6 @@
       </button>
     </div>
   </footer>
-
-  <!-- Speaker Notes Drawer (Roteiro do Orador) -->
-  <div class="speaker-drawer" id="speaker-drawer">
-    <div class="speaker-header">
-      <div class="speaker-header-title">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-        <span>Roteiro / Notas do Apresentador</span>
-      </div>
-      <button class="speaker-close" id="btn-close-notes">&times;</button>
-    </div>
-    <div class="speaker-body" id="speaker-content">
-      <!-- Inserido dinamicamente via JS -->
-    </div>
-  </div>
 
   <!-- Slide Overview Modal (Grade de Slides) -->
   <div class="overview-modal" id="overview-modal">
@@ -2143,10 +2180,6 @@
       const nextBtn = document.getElementById('btn-next');
       const counter = document.getElementById('slide-counter');
       const progressFill = document.getElementById('progress-fill');
-      const notesBtn = document.getElementById('btn-notes');
-      const notesDrawer = document.getElementById('speaker-drawer');
-      const closeNotesBtn = document.getElementById('btn-close-notes');
-      const notesContent = document.getElementById('speaker-content');
       const overviewBtn = document.getElementById('btn-overview');
       const overviewModal = document.getElementById('overview-modal');
       const closeOverviewBtn = document.getElementById('btn-close-overview');
@@ -2209,23 +2242,12 @@
         progressFill.style.width = `${((newIndex + 1) / totalSlides) * 100}%`;
         prevBtn.disabled = newIndex === 0;
         nextBtn.disabled = newIndex === totalSlides - 1;
-
-        // Atualiza Roteiro do Orador
-        const currentSlide = slides[newIndex];
-        const notes = currentSlide.getAttribute('data-notes') || 'Sem anotações específicas.';
-        const title = currentSlide.querySelector('.slide-title')?.textContent || '';
-        notesContent.innerHTML = `
-          <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 6px;">Pauta do Slide:</h4>
-          <p style="color: var(--accent-cyan); font-weight: 700; margin-bottom: 12px;">${title}</p>
-          <div style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent-cyan); padding: 10px 14px; border-radius: 0 8px 8px 0; color: #f1f5f9; line-height: 1.6;">
-            ${notes}
-          </div>
-        `;
       }
 
       function goToSlide(index) {
         if (index < 0 || index >= totalSlides) return;
         currentIndex = index;
+        slides[index].scrollTop = 0;
         updateSlideClasses(currentIndex);
       }
 
@@ -2287,25 +2309,11 @@
           case 'F':
             toggleFullScreen();
             break;
-          case 'n':
-          case 'N':
-            toggleNotes();
-            break;
           case 'm':
           case 'M':
             toggleOverview();
             break;
         }
-      });
-
-      function toggleNotes() {
-        notesDrawer.classList.toggle('open');
-        notesBtn.classList.toggle('active', notesDrawer.classList.contains('open'));
-      }
-      notesBtn.addEventListener('click', toggleNotes);
-      closeNotesBtn.addEventListener('click', () => {
-        notesDrawer.classList.remove('open');
-        notesBtn.classList.remove('active');
       });
 
       function toggleOverview() {
@@ -2474,6 +2482,15 @@
           openDocModal('📄 Relatório Técnico de Não Conformidades (22 Páginas)', content, 'Relatório Fotográfico Completo (23/04/2026)', 'relatorio_fotografico.pdf');
         });
       }
+
+      // Navegação por gesto (swipe) em telas de toque
+      let tx = 0, ty = 0;
+      const vp = document.querySelector('main.deck-viewport');
+      vp.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+      vp.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) { dx < 0 ? nextSlide() : prevSlide(); }
+      }, { passive: true });
 
       // Inicia no primeiro slide
       updateSlideClasses(0);
